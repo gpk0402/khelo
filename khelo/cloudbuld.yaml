@@ -1,0 +1,9 @@
+steps:
+  - name: 'maven:3.8.4'
+    args: ['mvn', 'clean', 'install']
+    dir: '/workspace/khelo'
+  - name: 'gcr.io/cloud-builders/docker'
+    args: ['build', '-t', 'gcr.io/khelo-dummy/khelo', '.']
+    dir: '/workspace/khelo'
+  - name: 'gcr.io/cloud-builders/docker'
+    args: ['push', 'gcr.io/khelo-dummy/khelo']
